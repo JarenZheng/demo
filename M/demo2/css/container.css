@@ -1,0 +1,34 @@
+img{max-width:100%;}
+.ma{margin:0 auto;}
+.pr{position:relative;}
+.pa{position:absolute;}
+.fb{font-weight:bold;}
+.p0{padding:0;}
+.p7{padding:7px;}
+.p15{padding:15px;}
+.ptb5-lr15{padding:5px 15px;}
+.ptb10{padding:12px 0;}
+.ptb15{padding:15px 0;}
+.pt10{padding-top:10px;}
+.pl8{padding-left:8px;}
+.pr8{padding-right:8px;}
+.f16{font-size:16px;}
+.f18{font-size:18px;}
+.cfff{color:#fff;}
+
+.ml8{margin-left:8px;}
+
+.w{width:100%;}
+.w640{max-width:640px;}
+.br5{border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+.br10{border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;}
+.aBtn{background:#d4441d;border:none;color:#fff;}
+.inputBg{background:rgba(255,255,255,0.9);border:none;}
+
+.formBox{padding:15px 15px 30px 0;background:rgba(255,255,255,0.2);}
+
+.return p{background:#ffb400;line-height:50px;}
+.return a{color:#fff;line-height:50px; text-indent:5%;}
+.iconedit{left:0;top:0;z-index:9}
+.obj{font-size:16px;font-weight:bold;padding-top:20px;padding-bottom:5px;}
+.col-img-pad{padding:25px 15px 20px;}

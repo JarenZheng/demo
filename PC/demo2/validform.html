@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://validform.rjboy.cn/wp-content/themes/validform/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://validform.rjboy.cn/Validform/v5.1/Validform_v5.1_min.js"></script>
+<script>
+	$(function(){
+		$(".demoform").Validform();
+	});
+	$(".demoform").Validform({
+		btnSubmit:"#btn_sub", 
+		btnReset:".btn_reset",
+		tiptype:1, 
+		ignoreHidden:false,
+		dragonfly:false,
+		tipSweep:true,
+		label:".label",
+		showAllError:false,
+		postonce:true,
+		ajaxPost:true,
+		datatype:{
+			"*6-20": /^[^\s]{6,20}$/,
+			"z2-4" : /^[\u4E00-\u9FA5\uf900-\ufa2d]{2,4}$/,
+			"username":function(gets,obj,curform,regxp){
+				//参数gets是获取到的表单元素值，obj为当前表单元素，curform为当前验证的表单，regxp为内置的一些正则表达式的引用;
+				var reg1=/^[\w\.]{4,16}$/,
+					reg2=/^[\u4E00-\u9FA5\uf900-\ufa2d]{2,8}$/;
+	 
+				if(reg1.test(gets)){return true;}
+				if(reg2.test(gets)){return true;}
+				return false;
+	 
+				//注意return可以返回true 或 false 或 字符串文字，true表示验证通过，返回字符串表示验证失败，字符串作为错误提示显示，返回false则用errmsg或默认的错误提示;
+			},
+			"phone":function(){
+				// 5.0 版本之后，要实现二选一的验证效果，datatype 的名称 不 需要以 "option_" 开头;	
+			}
+		},
+		usePlugin:{
+			swfupload:{},
+			datepicker:{},
+			passwordstrength:{},
+			jqtransform:{
+				selector:"select,input"
+			}
+		},
+		beforeCheck:function(curform){
+			//在表单提交执行验证之前执行的函数，curform参数是当前表单对象。
+			//这里明确return false的话将不会继续执行验证操作;	
+		},
+		beforeSubmit:function(curform){
+			//在验证成功后，表单提交前执行的函数，curform参数是当前表单对象。
+			//这里明确return false的话表单将不会提交;	
+		},
+		callback:function(data){
+			//返回数据data是json对象，{"info":"demo info","status":"y"}
+			//info: 输出提示信息;
+			//status: 返回提交数据的状态,是否提交成功。如可以用"y"表示提交成功，"n"表示提交失败，在ajax_post.php文件返回数据里自定字符，主要用在callback函数里根据该值执行相应的回调操作;
+			//你也可以在ajax_post.php文件返回更多信息在这里获取，进行相应操作；
+			//ajax遇到服务端错误时也会执行回调，这时的data是{ status:**, statusText:**, readyState:**, responseText:** }；
+	 
+			//这里执行回调操作;
+			//注意：如果不是ajax方式提交表单，传入callback，这时data参数是当前表单对象，回调函数会在表单验证全部通过后执行，然后判断是否提交表单，如果callback里明确return false，则表单不会提交，如果return true或没有return，则会提交表单。
+		}
+	});
+</script>
+</head>
+<body>
+    <form class="demoform">
+		<input type="text" value="" name="name" datatype="s5-16" 
+		errormsg="昵称至少5个字符,最多16个字符！" />
+		<!--ajax实时验证用户名-->
+<input type="text" value="" name="name" datatype="e" ajaxurl="valid.php?myparam1=value1&myparam2=value2" sucmsg="用户名验证通过！" nullmsg="请输入用户名！" errormsg="请用邮箱或手机号码注册！"  />
+ 
+<!--密码-->
+<input type="password" value="" name="userpassword" datatype="*6-15" errormsg="密码范围在6~15位之间！" />
+<!--确认密码-->
+<input type="password" value="" name="userpassword2" datatype="*" recheck="userpassword" errormsg="您两次输入的账号密码不一致！" />
+ 
+<!--默认提示文字-->
+<textarea tip="请在这里输入您的意见。" errormsg="很感谢您花费宝贵时间给我们提供反馈，请填写有效内容！"  datatype="s" altercss="gray" class="gray" name="msg" value="">请在这里输入您的意见。</textarea>
+ 
+<!--使用swfupload插件-->
+<input type="text" plugin="swfupload" class="inputxt" disabled="disabled" value="">
+<input type="hidden" value="" pluginhidden="swfupload">
+ 
+<!--使用passwordStrength插件-->
+<input type="password" errormsg="密码至少6个字符,最多18个字符！" datatype="*6-18" plugin="passwordStrength" class="inputxt" name="password" value="">
+<div class="passwordStrength" style="display:none;"><b>密码强度：</b> <span>弱</span><span>中</span><span class="last">强</span></div>
+ 
+<!--使用DatePicker插件-->
+<input type="text" plugin="datepicker" class="inputxt" name="birthday" value="">
+	</form>
+</body>
+</html>

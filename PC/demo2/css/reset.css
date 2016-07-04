@@ -1,0 +1,248 @@
+@charset "UTF-8";
+/* reset.css start */
+body{
+    margin:0;
+    padding:0;
+    font:14px 'Microsoft YaHei',arial;
+    color:#333;
+}
+h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dt,dd,blockquote,form,fieldset{
+    margin:0;
+}
+ul,ol{
+    padding-left:0;
+    list-style-type: none;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input, label {
+    vertical-align:middle;
+}
+input, select {
+    outline:none;
+}
+input[type=text],input[type=password]{
+    padding:0 10px;
+    border:1px solid #ccc;
+}
+img{
+    border:none;
+    float:left;
+}
+a {
+    text-decoration:none;
+    color:#333;
+    outline:none;
+}
+a:hover {
+    color:#008000;
+}
+/* html5标签必须转为块元素才能兼容ie*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}
+/* 标题 */
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+h1,h2{
+    line-height:36px;
+}
+h3{
+    line-height:27px;
+}
+h4,h5,h6{
+    line-height:18px;
+}
+h1{
+    font-size:24px;
+}
+h2{
+    font-size:20px;
+}
+h3{
+    font-size:18px;
+}
+h4{
+    font-size:14px;
+}
+h5,h6{
+    font-size:12px;
+}
+/* reset.css end */
+
+/* multiplex.css start */
+.ma{margin:auto;}
+/* display */
+.dn{display:none;}
+.di{display:inline;}
+.db{display:block;}
+.dib{display:inline-block;}
+/* percent width value */
+.pct5{width:5%;}
+.pct10{width:10%;}
+.pct15{width:15%;}
+.pct18{width:18%;}
+.pct20{width:20%;}
+.pct23{width:23%;}
+.pct24{width:24%;}
+.pct25{width:25%;}
+.pct30{width:30%;}
+.pct33{width:33.3%;}
+.pct35{width:35%;}
+.pct40{width:40%;}
+.pct45{width:45%;}
+.pct50{width:50%;}
+.pct60{width:60%;}
+.pct66{width:66.6%;}
+.pct70{width:70%;}
+.pct75{width:75%;}
+.pct80{width:80%;}
+.pct90{width:90%;}
+.pct92{width:92%;}
+.pct100{width:100%;}
+/* margin */
+.mt-2{margin-top:-2px;}
+.m0{margin:0;}
+.ml5{margin-left:5px;}
+.ml10{margin-left:10px;}
+.ml15{margin-left:15px;}
+.ml20{margin-left:20px;}
+.ml30{margin-left:30px;}
+.ml40{margin-left:40px;}
+.mr5{margin-right:5px;}
+.mr10,.cell-mr10 a{margin-right:10px;}
+.mr15{margin-right:15px;}
+.mr20{margin-right:20px;}
+.mr30{margin-right:30px;}
+.mt5{margin-top:5px;}
+.mt10{margin-top:10px;}
+.mt15{margin-top:15px;}
+.mt20{margin-top:20px;}
+.mt30{margin-top:30px;}
+.mb5{margin-bottom:5px;}
+.mb10{margin-bottom:10px;}
+.mb15{margin-bottom:15px;}
+.mb20{margin-bottom:20px;}
+.mb30{margin-bottom:30px;}
+/* padding */
+.p0{padding:0;}
+.pt2{padding-top:2px;}
+.p5{padding:5px;}
+.pl5{padding-left:5px;}
+.pt5{padding-top:5px;}
+.pr5{padding-right:5px;}
+.pb5{padding-bottom:5px;}
+.p10{padding:10px;}
+.pl10{padding-left:10px;}
+.pt10{padding-top:10px;}
+.pr10{padding-right:10px;}
+.pb10{padding-bottom:10px;}
+.p15{padding:15px;}
+.pl15{padding-left:15px;}
+.pt15{padding-top:15px;}
+.pr15{padding-right:15px;}
+.pb15{padding-bottom:15px;}
+.p20{padding:20px;}
+.pl20{padding-left:20px;}
+.pt20{padding-top:20px;}
+.pr20{padding-right:20px;}
+.pb20{padding-bottom:20px;}
+.p30{padding:30px;}
+.pl30{padding-left:30px;}
+.pt30{padding-top:30px;}
+.pr30{padding-right:30px;}
+.pb30{padding-bottom:30px;}
+/* border-color name rule: border(b)-position(l/r/t/b/d)-width(null/2)-style(null/sh)-color(first one letter/first two letter) |-> All colors are safe color*/
+.bde{border:1px solid #eee;}
+.ble{border-left:1px solid #eee;}
+.bre{border-right:1px solid #eee;}
+.bte{border-top:1px solid #eee;}
+.bbe{border-bottom:1px solid #eee;}
+.bbnone{border-bottom:none;}
+/* background-color name rule: bg - (key word/Hex color) |-> All colors are safe color */
+.bgwh{background-color:#fff;}
+.bgfa{background-color:#fafafa;}
+.bge0{background-color:#e0e0e0;}
+/* safe color */
+.c0{color:#000;}
+.c3{color:#333;}
+.c6{color:#666;}
+.c9{color:#999;}
+.cc{color:#ccc;}
+.cf{color:#fff;}
+/* font-size */
+.f12{font-size:12px;}
+.f14{font-size:14px;}
+.f16{font-size:16px;}
+.f18,.text-f18 a{font-size:18px;}
+.f20{font-size:20px;}
+.f24{font-size:24px;}
+.f26{font-size:26px;}
+.f30{font-size:30px;}
+.f36{font-size:36px;}
+.f40{font-size:40px;}
+/* font-style */
+.n{font-weight:normal; font-style:normal;}
+.b{font-weight:bold;}
+.i{font-style:italic;}
+/* text-align */
+.tc{text-align:center;}
+.tr{text-align:right;}
+.tl{text-align:left;}
+.tj{text-align:justify;}
+/* white-space */
+.nowrap{white-space:nowrap;}
+/* word-wrap */
+.bk{word-wrap:break-word;}
+/* vertical-align */
+.vm{vertical-align:middle;}
+.vtb{vertical-align:text-bottom;}
+.vb{vertical-align:bottom;}
+.vt{vertical-align:top;}
+/* float */
+.fl{float:left;}
+.fr{float:right;}
+/* clear */
+.cb{clear:both;}
+/* position */
+.rel{position:relative;}
+.abs{position:absolute;}
+.ratop{top:0;}
+/*z-index*/
+.zx1{z-index:1;}
+.zx2{z-index:2;}
+.zx3{z-index:3;}
+.zx4{z-index:4;}
+/* cursor */
+.poi,.jqdata{cursor:pointer;}
+/* overflow */
+.ovh{overflow:hidden;}
+/* 块状元素水平居中 */
+.auto{margin-left:auto; margin-right:auto;}
+/* 清除浮动*/
+.clearfix:before, .clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after{
+    clear:both;
+    overflow:hidden;
+}
+.clearfix{
+    zoom:1;
+}
+/* 单行文字溢出虚点显示*/
+.ell{text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+/* 大小不定元素垂直居中 */
+.dib_vm{display:inline-block; width:0; height:100%; vertical-align:middle;}
+/* 加载中背景图片 - 如果您使用该CSS小库，务必修改此图片地址 */
+.loading{background:url(images/loading.gif) no-repeat center;}
+/* 无框文本框文本域 */
+.bd_none{border:0; outline:none;}
+/* 绝对定位隐藏 */
+.abs_out{position:absolute; left:-999em; top:-999em;}
+/* radius */
+.br5{border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px}
+.br10{border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px}
+/* multiplex.css end */

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小树投-睡眠日-答题活动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="keywords" content="微官网" />
+    <meta name="description" content="微官网" />
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/container.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../scripts/jqbass.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../scripts/html5shiv.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    	body{
+			background:#9021b6;
+		}
+	</style>
+    <script type="text/javascript">
+		$(function(){
+			/*去掉重复数组*/
+			function createRandom(num,sum)
+			{
+				var arr=[];
+				var json={};
+				while(arr.length<num)
+				{
+					//产生单个随机数
+					var ranNum=Math.floor(Math.random()*sum);
+					//通过判断json对象的索引值是否存在 来标记 是否重复
+					if(!json[ranNum])
+					{
+						json[ranNum]=1;
+						arr.push(ranNum);
+					}
+				}
+				return arr;
+			}
+			/*随机数组5条*/
+			var array = createRandom(5,$('.answer-box').length-1);
+			console.log(array);
+			/*随机数组5条添加class并显示第一条*/
+			for(var i=0;i<array.length;i++){
+				/*$('.answer-box').eq(array[0]).show();*/
+				$('.answer-box').eq(array[i]).addClass('newList');
+			}
+			$('.newList').eq(0).show();
+			/*20秒倒计时*/
+			var list = 0,
+			   $time = $('.answer-time').html(),
+			   $timer = null,
+			 fraction = 0,
+			 	 five = 0;
+			function nextRadio(timeEnd){
+				 $timer = setInterval(function () {
+					timeEnd--;
+					$('.answer-time').html(timeEnd);
+					if (timeEnd === 0) {
+						five -= 5;
+						autoRadio();
+					}
+				}, 1000);
+			}
+			nextRadio($time);
+			/*点击事件触发*/
+		    $('input:radio[name="answer-r"]').change(function(){
+				$(this).attr('checked',true);
+				fraction += parseInt($(this).val());
+				autoRadio();
+		   });
+		   function autoRadio(){
+			    $('#fraction').val(fraction + five);
+			    clearInterval($timer);
+				$('.answer-time').html($time);
+				nextRadio($time);
+				list++;
+				if(list < $('.newList').length){
+					$('.answer-num').html(list+1);
+					setInterval(function(){
+						$('.newList').eq(list).show().siblings('.newList').hide();	
+					},200);	
+				}else{
+					$('.btnsubmit').click();
+					return;
+				}
+		  }
+		});
+    </script>
+</head>
+<body>
+<input type="hidden" value="0" id="fraction"/>
+<div class="container w640 rel">
+	<div class="row">
+    	<div class="answer-title clearfix">
+        	<div class="col-xs-12 p0 pt10">
+            	<div class="col-xs-8 text-left"><i class="iconfont cfff f36 cffe">&#xe634;</i>&nbsp;答题时间<span class="f30 answer-time cffe">20</span>秒</div>
+                <div class="col-xs-4 text-right"><i class="iconfont cfff f36 cffe"></i><span class="answer-num">1</span>/5</div>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">下面哪种心态最适合谈恋爱？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></span></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;我才是最重要的人</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;先接触，对我感兴趣的话就继续</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;目标——让TA喜欢我</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">在搭讪开始之后，过多久进行肢体接触是最合适的？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;30s~3min</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;5min~15min</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;TA先摸你后</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">在购物时，心仪的女生跟你说，“这条裙子真好看，挺适合我的。”你会说：</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;穿在你身上真的很合适，我买给你吧。</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;那个…其实它不适合你。</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;是挺好看的，你喜欢你就买吧</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">在冷读一个外向的人时，要让TA觉得你很了解TA时，怎么说最合适？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;表面上看，你很开朗，其实你很寂寞</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;可能你经过一次情伤</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;你的性格受家人影响很大哦</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">搭讪的时候，你觉得从哪个方面开始话题会比较好？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;从搭讪的情境入手</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;谈论她（他）的工作</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;跟TA聊TA平时的休闲娱乐</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">下面哪个信号暗示著TA想和你KISS？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;TA先看你的左眼，再看你的嘴唇，最后看你右眼</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;TA用食指抵著TA的嘴唇</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;TA轻抚TA后脑勺的头发</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">你觉得在搭讪的哪个阶段要电话是最合适的？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;当你推不动整个互动的进程时</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;当你们要分别时</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;等TA先要我电话</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">当你在工作的时候，TA突然打电话过来，你会：</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;立刻放下工作接电话</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;告诉TA现在不方便接电话</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;直接挂断</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">约自己喜欢的一个人，TA说自己很忙，最好的做法是:</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;我只要你20分钟，我可以等你</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;那你先去忙吧，等我有空了我再约你</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;我先排个队，等你有空了打电话给我</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">当TA问“现在在干嘛？”是什么目的？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;TA寂寞</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;有事要帮忙</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;想你了</div>
+                </label>
+            </div>
+        </div>
+         <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">在交往时，下列哪一项是正确的做法？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;试图说服TA接受你的观点</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;起争执时表达自己内心的感受</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;交浅言深</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">下列哪种追求TA的方式成功率更高？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;经常送礼物</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;点滴关心</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;利用双方共同的好友</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">逛街的时候当TA说“我累了”是什么意思？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;TA真的累了</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;TA觉得无聊</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;TA饿了</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">当TA微信说“我受伤了”是什么意思？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;觉得TA开玩笑</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;无病呻吟</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;想引起关注</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">起争执时，TA说“我觉得你很自私”，你会说：</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;那你呢？你又好到哪里去？</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;我做了什么事情让你感觉这样子？</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;我怎么做你才会满意？</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">发工资了钱应该如何处理？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;给妈妈</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;给对象</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;自己拿自己花</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">下列哪种做法最有利于情侣发展？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;由女性管理两个人的钱</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;收入不同，实行AA制</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;两个人建立一个共同账户</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">出去约会谁买单？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;男方</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;女方</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;AA制</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">热恋中的情侣该如何避免为钱闹掰？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;转变消费观念，省钱约会</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;建立恋爱资金账户，进行理财规划</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;等有积蓄了再进行理财</div>
+                </label>
+            </div>
+        </div>
+        <div class="answer-box dn">
+        	<div class="answer-title radio-title clearfix">
+        		<div class="col-xs-12 f16 answer-text text-center">婚前check，怎样谈钱不伤感情？</div>
+            </div>
+            <div class="radio-box">
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="0"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">A.</span>&nbsp;父母协调</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="-5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">B.</span>&nbsp;直接谈</div>
+                </label>
+                <label class="col-xs-12 radio-label">
+                    <div class="col-xs-1 text-right p0"><input type="radio" name="answer-r" value="5"/></div>
+                    <div class="col-xs-11 text-left cfff"><span class="cffe">C.</span>&nbsp;找理财规划师谈</div>
+                </label>
+            </div>
+        </div>
+        <form action="wainning.html" method="post">
+            <button type="submit" class="btnsubmit dn"></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
